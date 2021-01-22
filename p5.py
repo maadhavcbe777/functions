@@ -1,11 +1,18 @@
+def make_dict(x):
+    dictionary = {}
+    for letter in x:
+        dictionary[letter] = 1 + dictionary.get(letter, 0)
+    return dictionary
+
+
 def most_frequent(string):
-    d=dict()
-    for a in string:
-        if a not in d:
-            d[a]=1
-        else:
-            d[a]+=1
-    return d
+    letters = [letter.lower() for letter in text if letter.isalpha()]
+    dictionary = make_dict(letters)
+    result = []
+    for key in dictionary:
+        result.append((dictionary[key], key))
+    result.sort(reverse=True)
+    for count, letter in result:
+        print(letter, count)
 string=str(input("enter a string"))
-print(most_frequent(string))
-        
+most_frequent(string)
